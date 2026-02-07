@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凡梦个人导航</title>
+    <style>
+        :root{
+            /* 以蓝色为主色调 */
+            --bg-1: #07132b; /* 深海蓝 */
+            --bg-2: #0f3d91; /* 宝石蓝 */
+            --accent: #64b5f6; /* 天空蓝 */
+            --muted: rgba(100,181,246,0.08);
+            --card-bg: rgba(14,56,112,0.22);
+            --text: #e6f7ff;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            color: var(--text);
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        * { box-sizing: inherit; }
+
+        /* Header - full screen intro */
+        .header{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            overflow: hidden;
+            /* 中心为白色，向外过渡为多级蓝色，突出从中间向外扩散的视觉 */
+            background: radial-gradient(circle at center, #64b5f6 36%, #1976d2 68%, var(--bg-2) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            animation: bgPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse{
+            from { background-size: 100% 100%; filter: hue-rotate(0deg); }
+            to { background-size: 130% 130%; filter: hue-rotate(6deg); }
+        }
+
+        .container{
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info{
+            flex: 1 1 60%;
+            animation: fadeInUp .9s ease both;
+        }
+
+        h1{
+            font-size: clamp(1.6rem, 3.6vw, 3rem);
+            margin: 0 0 .6rem 0;
+            line-height: 1.05;
+        }
+        p.lead{
+            margin: 0 0 1.2rem 0;
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(.95rem, 1.6vw, 1.1rem);
+            max-width: 54ch;
+        }
+
+        .links{
+            display: flex;
+            gap: .6rem;
+            flex-wrap: wrap;
+        }
+        .btn{
+            background: rgba(100,181,246,0.08);
+            color: var(--text);
+            padding: .6rem .9rem;
+            border-radius: .5rem;
+            text-decoration: none;
+            border: 1px solid rgba(100,181,246,0.14);
+            transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+            display: inline-flex;
+            gap: .5rem;
+            align-items: center;
+        }
+        .btn:hover{ transform: translateY(-4px); box-shadow: 0 10px 30px rgba(24,117,205,0.22); background: rgba(100,181,246,0.14); }
+
+        h1 strong{ color: rgb(14, 100, 181)
+            }
+
+        .cards{ display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; max-width:1100px; margin: 0 auto; }
+        .card{ background: var(--card-bg); padding: 1.2rem; border-radius: .7rem; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 6px 18px rgba(12,40,80,0.22); }
+
+
+        .avatar-wrap{
+            flex: 0 0 220px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .avatar{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(255,255,255,0.08);
+            box-shadow: 0 12px 40px rgba(10,10,20,0.6);
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            transform-origin: center;
+            will-change: transform;
+            transition: transform .22s cubic-bezier(.2,.9,.2,1), filter .2s ease;
+            animation: float 4.5s ease-in-out infinite;
+            display:inline-block;
+        }
+        .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+        @keyframes float{
+            0%{ transform: translateY(0); }
+            50%{ transform: translateY(-8px); }
+            100%{ transform: translateY(0); }
+        }
+
+        .avatar.scrolled{ animation: none; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.6)); }
+
+  
+        @keyframes fadeInUp{
+            from{ opacity: 0; transform: translateY(12px); }
+            to{ opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal{ opacity: 0; transform: translateY(12px); transition: all .6s cubic-bezier(.2,.9,.2,1); }
+        .reveal.in{ opacity: 1; transform: translateY(0); }
+
+       
+        section{
+            width: 100%;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        }
+
+        .cards{ display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; max-width:1100px; margin: 0 auto; }
+        .card{ background: rgba(255,255,255,0.03); padding: 1.2rem; border-radius: .7rem; border: 1px solid rgba(255,255,255,0.03); }
+
+       
+        @media (max-width: 720px){
+            .container{ flex-direction: column-reverse; align-items:center; gap:1.6rem; }
+            .avatar-wrap{ flex: 0 0 160px; }
+            .avatar{ width: 140px; height: 140px; }
+            .profile-info{ text-align:center; }
+            .btn{ margin: 0 auto; }
+        }
+        a{
+          text-decoration: none;
+          color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="profile-info">
+                <h1 class="reveal">你好，我是 <strong>凡梦</strong> — 前端开发者 & 个人创作者</h1>
+                <p class="lead reveal">我热爱构建简洁、可访问且有趣的网络界面。这里是我的个人导航，你可以快速访问我的项目、社交媒体和笔记。</p>
+                <div class="links reveal">
+                    <a class="btn" href="#projects">项目</a>
+                    <a class="btn" href="#about">关于</a>
+                    <a class="btn" href="#contact">联系</a>
+                    <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+            <div class="avatar-wrap reveal">
+                <div class="avatar" id="avatar">
+                    <img src="./images/fm.jpg" alt="头像">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="projects">
+        <div class="cards">
+            <div class="card reveal">🔗 <strong>个人博客</strong><div><a href="https://lyxfm.ct.ws/">https://lyxfm.ct.ws/</a></div></div>
+            <div class="card reveal">🔗 <strong>项目 </strong><div>简短描述与链接</div></div>
+            <div class="card reveal">🔗 <strong>项目 </strong><div>简短描述与链接</div></div>
+            <div class="card reveal">🔗 <strong>笔记</strong><div>工具、碎片化知识</div></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">关于我</h2>
+            <p class="reveal">我是专计算机业应届毕业生 
+                ，具备 [Python/Java/ 前端三件套 / 数据库] 等技术基础，曾通过 [课程实战 / 小型项目 / 实习] 完成 [功能开发 / 数据处理 / 页面搭建] 等工作，具备良好的逻辑
+                思维和问题解
+                决能力，学习能力强，能快速适配团队节奏，希望能在岗位上发挥技术能力，完成业务开发与技术沉淀。</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">联系我</h2>
+            <p class="reveal">邮箱：3475504271@qq.com</p>
+        </div>
+    </section>
+
+    <footer style="padding:2rem;text-align:center;opacity:.7">© 2026 凡梦 — 个人导航</footer>
+
+    <script>
+        // Scroll-driven avatar movement + reveal on scroll
+        document.addEventListener('DOMContentLoaded', function(){
+            const avatar = document.getElementById('avatar');
+            const header = document.querySelector('.header');
+            const headerHeight = header.offsetHeight;
+            let ticking = false;
+            let lastY = 0;
+
+            function update(){
+                const pct = Math.min(lastY / headerHeight, 1);
+                const y = pct * -60; // move up to -60px
+                const scale = 1 - pct * 0.06;
+                avatar.style.transform = `translateY(${y}px) scale(${scale})`;
+                if (lastY > 10) avatar.classList.add('scrolled'); else avatar.classList.remove('scrolled');
+                header.style.backgroundPosition = `center ${20 + pct * 30}%`;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function(){
+                lastY = window.scrollY;
+                if (!ticking){
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Reveal observer
+            const reveals = document.querySelectorAll('.reveal');
+            const obs = new IntersectionObserver((entries)=>{
+                entries.forEach(entry=>{
+                    if (entry.isIntersecting) entry.target.classList.add('in');
+                });
+            }, { threshold: 0.12 });
+            reveals.forEach(r=>obs.observe(r));
+
+            // Small parallax on mouse move for desktop
+            document.addEventListener('mousemove', (e)=>{
+                const cx = (e.clientX - window.innerWidth/2) / window.innerWidth;
+                const cy = (e.clientY - window.innerHeight/2) / window.innerHeight;
+                avatar.style.transform += ` translateZ(0) rotateX(${cy*3}deg) rotateY(${cx*4}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
