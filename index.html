@@ -96,6 +96,10 @@
 
         h1 strong{ color: rgb(14, 100, 181)
             }
+        h2{ font-size: clamp(1.4rem, 2.8vw, 2.2rem); margin: 0 0 1.5rem 0; color: var(--accent); }
+        h3{ font-size: clamp(1.1rem, 2vw, 1.4rem); margin: 0 0 0.8rem 0; color: rgba(255,255,255,0.95); }
+        ul{ margin: 1rem 0; padding-left: 1.2rem; }
+        li{ margin: 0.5rem 0; line-height: 1.4; }
 
         .cards{ display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; max-width:1100px; margin: 0 auto; }
         .card{ background: var(--card-bg); padding: 1.2rem; border-radius: .7rem; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 6px 18px rgba(12,40,80,0.22); }
@@ -168,13 +172,13 @@
     <header class="header">
         <div class="container">
             <div class="profile-info">
-                <h1 class="reveal">你好，我是 <strong>凡梦</strong> — 前端开发者 & 个人创作者</h1>
-                <p class="lead reveal">我热爱构建简洁、可访问且有趣的网络界面。这里是我的个人导航，你可以快速访问我的项目、社交媒体和笔记。</p>
+                <h1 class="reveal">你好，我是 <strong>凡梦</strong> — 运维工程师 & IT技术支持</h1>
+                <p class="lead reveal">我专注于服务器配置、网络运维和IT技术支持，具备Linux服务器配置、H3c设备运维、网络安全等核心技能。这里是我的个人导航，你可以了解我的专业背景、技能和经历。</p>
                 <div class="links reveal">
-                    <a class="btn" href="#projects">项目</a>
-                    <a class="btn" href="#about">关于</a>
+                    <a class="btn" href="#skills">技能</a>
+                    <a class="btn" href="#education">教育</a>
+                    <a class="btn" href="#experience">经历</a>
                     <a class="btn" href="#contact">联系</a>
-                    <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
             <div class="avatar-wrap reveal">
@@ -185,29 +189,69 @@
         </div>
     </header>
 
-    <section id="projects">
-        <div class="cards">
-            <div class="card reveal">🔗 <strong>个人博客</strong><div><a href="https://lyxfm.ct.ws/">https://lyxfm.ct.ws/</a></div></div>
-            <div class="card reveal">🔗 <strong>项目 </strong><div>简短描述与链接</div></div>
-            <div class="card reveal">🔗 <strong>项目 </strong><div>简短描述与链接</div></div>
-            <div class="card reveal">🔗 <strong>笔记</strong><div>工具、碎片化知识</div></div>
+    <section id="skills">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">核心技能</h2>
+            <div class="cards">
+                <div class="card reveal">�️ <strong>服务器配置</strong><div>Linux服务器配置与管理、Windows Server、麒麟操作系统</div></div>
+                <div class="card reveal">🌐 <strong>网络设备</strong><div>H3c设备配置、网络安全与管理</div></div>
+                <div class="card reveal">� <strong>编程与数据库</strong><div>Python程序设计、PHP、MySQL数据库基础</div></div>
+                <div class="card reveal">🎨 <strong>设计与工具</strong><div>网页设计、Photoshop基础图文设计、Auto CAD基础绘制</div></div>
+                <div class="card reveal">� <strong>办公技能</strong><div>计算机办公自动化中级证书，精通Office套件</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">教育背景</h2>
+            <div class="card reveal">
+                <h3>铜陵职业技术学院</h3>
+                <p>计算机网络技术 | 大学专科 | 2024.09 - 2027.06</p>
+                <p><strong>主修课程：</strong>Linux服务器配置与管理、Windows Server、麒麟操作系统、H3c设备配置、网络安全与管理</p>
+                <p><strong>编程与数据库：</strong>Python程序设计、PHP、MySQL数据库基础</p>
+                <p><strong>设计与工具：</strong>网页设计、Photoshop基础图文设计、Auto CAD基础绘制</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">实习经历</h2>
+            <div class="card reveal">
+                <h3>安徽胜利精密制造科技有限公司</h3>
+                <p>计算机组装员 | 2023.9 - 2024.02</p>
+                <ul>
+                    <li>依据硬件装配工艺标准，完成计算机CPU、主板、内存、硬盘等核心部件的精准装配与接口调试，累计完成450+台设备组装</li>
+                    <li>严格遵循SOP流程管理组装工具与零部件，规范整理装配台账，保障生产流程可追溯</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div style="max-width:900px;margin:0 auto;"> 
+            <h2 class="reveal">荣誉奖励与技能证书</h2>
+            <div class="cards">
+                <div class="card reveal">🏆 <strong>荣誉奖励</strong><div>2025学年 获校级网络运维一等奖</div><div>2025学年 获"三好学生"称号</div></div>
+                <div class="card reveal">📄 <strong>技能证书</strong><div>计算机装配调试员三级（2023年9月）</div><div>计算机办公自动化中级（2022年6月）</div><div>国家计算机等级三级证书（网络技术）</div><div>C1驾驶证（接受出差）</div></div>
+            </div>
         </div>
     </section>
 
     <section id="about">
         <div style="max-width:900px;margin:0 auto;"> 
-            <h2 class="reveal">关于我</h2>
-            <p class="reveal">我是专计算机业应届毕业生 
-                ，具备 [Python/Java/ 前端三件套 / 数据库] 等技术基础，曾通过 [课程实战 / 小型项目 / 实习] 完成 [功能开发 / 数据处理 / 页面搭建] 等工作，具备良好的逻辑
-                思维和问题解
-                决能力，学习能力强，能快速适配团队节奏，希望能在岗位上发挥技术能力，完成业务开发与技术沉淀。</p>
+            <h2 class="reveal">自我评价</h2>
+            <p class="reveal">本人主修计算机网络技术专业，熟练掌握Linux服务器配置、H3c设备运维、网络安全等核心技能，具备Python、MySQL基础编程能力及硬件装配调试实操经验。持有计算机装配调试员三级职业技能等级证书、网络技术三级等证书，在校获校级网络运维一等奖、"三好学生"称号。工作严谨负责，专业学习与协作能力强，适配技术支持、网络运维、硬件调试相关岗位。</p>
         </div>
     </section>
 
     <section id="contact">
         <div style="max-width:900px;margin:0 auto;"> 
             <h2 class="reveal">联系我</h2>
+            <p class="reveal">电话：19374132115</p>
             <p class="reveal">邮箱：3475504271@qq.com</p>
+            <p class="reveal">现居：安徽 铜陵</p>
         </div>
     </section>
 
